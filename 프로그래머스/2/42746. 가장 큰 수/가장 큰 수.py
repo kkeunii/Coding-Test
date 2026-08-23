@@ -1,4 +1,4 @@
-
+'''
 def solution(numbers):
     
     numbers = list(map(str, numbers))
@@ -14,4 +14,24 @@ def solution(numbers):
     
     
     return answer
+
+'''
+
+import functools
+
+def comparator(a, b):
+    if a + b > b + a:
+        return -1
+    if a + b < b + a:
+        return 1
+    return 0
+
+def solution(numbers):
+    numbers = list(map(str, numbers))
+    numbers.sort(key=functools.cmp_to_key(comparator))
+
+    if numbers[0] == '0':
+        return '0'
+
+    return ''.join(numbers)
                    
