@@ -1,4 +1,5 @@
 def solution(board):
+    '''
     n = len(board)
     
     answer = [[0 for col in range(n+2)] for row in range(n+2)]
@@ -16,6 +17,16 @@ def solution(board):
         for j in i[1:n+1]:
             if j == 0:
                 total_count +=1 
-        
+    '''
+    count = 0
+    n = len(board)
+    direction = [(x, y) for x in (-1, 0, 1) for y in (-1, 0, 1)]
+    for row in range(0, n):
+        for col in range(0, n):
+            for dx, dy in direction:
+                if (0 <= row+dx < n and 0 <= col+dy < n) and board[row+dx][col+dy] == 1:
+                    count += 1
+                    break
+            
                 
-    return total_count
+    return n*n - count 
